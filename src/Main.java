@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Statement pStemt = null;
         ResultSet rs = null;
         jdbc j = new jdbc();
@@ -35,19 +35,20 @@ public class Main {
             int i = scanner.nextInt();
             switch (i) {
                 case 1:
-                    j.add();
+                    j.add(scanner);
                     break;
                 case 2:
-                    j.delete();
+                    j.delete(scanner);
                     break;
                 case 3:
-                    j.modify();
+                    j.modify(scanner);
                     break;
                 case 4:
-                    j.search();
+                    j.search(scanner);
                     break;
                 default:
                     System.exit(0);
+                    connection.close();
             }
         } while(true);
     }

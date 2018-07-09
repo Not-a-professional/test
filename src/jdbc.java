@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 
 class jdbc {
@@ -22,19 +23,19 @@ class jdbc {
         return conn;
     }
 
-    public void add() {
+    public void add(Scanner scanner) {
+        System.out.print("输入您");
+    }
+
+    public void delete(Scanner scanner) {
 
     }
 
-    public void delete() {
+    public void modify(Scanner scanner) {
 
     }
 
-    public void modify() {
-
-    }
-
-    public void search() {
+    public void search(Scanner scanner) {
 
     }
 }
