@@ -1,11 +1,30 @@
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        Statement pStemt = null;
+        ResultSet rs = null;
         jdbc j = new jdbc();
         Connection connection = j.getConnection();
+        try {
+            pStemt = (Statement) connection.createStatement();
+        } catch (SQLException e) {
+            e.getLocalizedMessage();
+        }
+        String sql = "select * from user";
+        try {
+            rs = pStemt.executeQuery(sql);
+            while(rs.next()) {
+                System.out.println(rs.getString("username") + " " + rs.getString("pic"));
+            }
+        } catch (SQLException e) {
+            e.getLocalizedMessage();
+        }
     }
 
     public void test1() {

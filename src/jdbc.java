@@ -7,7 +7,7 @@ class jdbc {
     public Connection getConnection() {
         String url="jdbc:mysql://localhost:3306/user";
         String username="root";
-        String password="wwwliwei001com";
+        String password="";
         String driver = "com.mysql.jdbc.Driver";
         Connection conn = null;
         try {

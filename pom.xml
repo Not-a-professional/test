@@ -9,13 +9,16 @@
         xiufei
     </artifactId>
     <version>0.0.1</version>
-    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.16.18</version>
+                <version>1.18.0</version>
             </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.38</version>
+             </dependency>
         </dependencies>
-    </dependencyManagement>
 </project>
