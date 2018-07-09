@@ -12,7 +12,6 @@ import java.sql.Blob;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class user implements Serializable {
     private static final long serialVersionUID = 1L;
 
