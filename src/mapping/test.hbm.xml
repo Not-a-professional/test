@@ -7,9 +7,10 @@
 
     <class name="model.user" table="user">
         <id name="username" type="java.lang.String">
-            <column name="username"></column>
+            <column name="username"/>
         </id>
         <property name="pic" type="java.sql.Blob" column="pic"/>
+        <property name="date" type="java.sql.Date" column="date"/>
     </class>
 
 </hibernate-mapping>

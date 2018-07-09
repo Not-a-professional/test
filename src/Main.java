@@ -1,12 +1,32 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import model.user;
+import org.hibernate.Session;
+
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
+        test3();
+    }
+
+    public static void test3() {
+        Hibernate hibernate = new Hibernate();
+        Session session = hibernate.getSessionFactory().openSession();
+
+        session.beginTransaction();
+        user user = new user();
+
+        user.setDate((java.sql.Date) new Date());
+        user.setUsername("hibernate");
+
+        session.save(user);
+        session.getTransaction().commit();
+    }
+
+    public void test2() {
         Statement pStemt = null;
         ResultSet rs = null;
         jdbc j = new jdbc();
@@ -20,7 +40,8 @@ public class Main {
         try {
             rs = pStemt.executeQuery(sql);
             while(rs.next()) {
-                System.out.println(rs.getString("username") + " " + rs.getString("pic"));
+                System.out.println(rs.getString("username") + " " + rs.getString("pic")
+                        + " " + rs.getDate("date"));
             }
         } catch (SQLException e) {
             e.getLocalizedMessage();
@@ -48,7 +69,11 @@ public class Main {
                     break;
                 default:
                     System.exit(0);
-                    connection.close();
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
             }
         } while(true);
     }

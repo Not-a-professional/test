@@ -8,6 +8,7 @@ import lombok.Getter;
 
 import java.io.Serializable;
 import java.sql.Blob;
+import java.sql.Date;
 
 @ToString
 @AllArgsConstructor
@@ -22,4 +23,8 @@ public class user implements Serializable {
     @Getter
     @Setter
     private Blob pic;
+
+    @Getter
+    @Setter
+    private Date date;
 }
