@@ -21,4 +21,20 @@ class jdbc {
         System.out.println("系统启动！");
         return conn;
     }
+
+    public void add() {
+
+    }
+
+    public void delete() {
+
+    }
+
+    public void modify() {
+
+    }
+
+    public void search() {
+
+    }
 }

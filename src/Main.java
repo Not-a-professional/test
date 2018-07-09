@@ -25,6 +25,27 @@ public class Main {
         } catch (SQLException e) {
             e.getLocalizedMessage();
         }
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.println("1：增加数据");
+            System.out.println("2：删除数据");
+            System.out.println("3：修改数据");
+            System.out.println("4：查询数据");
+            System.out.println("0：退出程序");
+            int i = scanner.nextInt();
+            switch (i) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.exit(0);
+            }
+        } while(true);
     }
 
     public void test1() {
