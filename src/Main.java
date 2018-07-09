@@ -35,12 +35,16 @@ public class Main {
             int i = scanner.nextInt();
             switch (i) {
                 case 1:
+                    j.add();
                     break;
                 case 2:
+                    j.delete();
                     break;
                 case 3:
+                    j.modify();
                     break;
                 case 4:
+                    j.search();
                     break;
                 default:
                     System.exit(0);
