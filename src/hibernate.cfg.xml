@@ -7,10 +7,9 @@
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">wwwliwei001com</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/user</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/user?useSSL=false</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="person">true</property>
-        <mapping resource="mapping/test.hbm.xml"></mapping>
+        <mapping resource="mapping/user.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

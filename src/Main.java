@@ -13,13 +13,12 @@ public class Main {
     }
 
     public static void test3() {
-        Hibernate hibernate = new Hibernate();
-        Session session = hibernate.getSessionFactory().openSession();
+        Session session = Hibernate.getSession();
 
         session.beginTransaction();
         user user = new user();
 
-        user.setDate((java.sql.Date) new Date());
+        user.setDate(new java.sql.Date(System.currentTimeMillis()));
         user.setUsername("hibernate");
 
         session.save(user);
