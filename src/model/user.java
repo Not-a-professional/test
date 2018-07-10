@@ -7,8 +7,7 @@ import lombok.Setter;
 import lombok.Getter;
 
 import java.io.Serializable;
-import java.sql.Blob;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @ToString
 @AllArgsConstructor
@@ -22,9 +21,13 @@ public class user implements Serializable {
 
     @Getter
     @Setter
-    private Blob pic;
+    private byte[] pic;
 
     @Getter
     @Setter
-    private Date date;
+    private Timestamp date;
+
+    @Getter
+    @Setter
+    private int age;
 }

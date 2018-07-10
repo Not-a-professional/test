@@ -30,7 +30,7 @@
                 <artifactId>javassist</artifactId>
                 <version>3.9.0.GA</version>
             </dependency>
-            <dependency>
+        <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>5.1.38</version>

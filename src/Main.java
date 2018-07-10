@@ -1,31 +1,69 @@
 import model.user;
 import org.hibernate.Session;
 
+import java.io.*;
 import java.sql.*;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        test3();
+        Scanner scanner = new Scanner(System.in);
+        while(true) {
+            System.out.println("1：JDBC");
+            System.out.println("2：Hibernate");
+            System.out.println("0：退出");
+            int i = scanner.nextInt();
+            switch (i) {
+                case 1:
+                    test2(scanner);
+                    break;
+                case 2:
+                    test3(scanner);
+                    break;
+                 default:
+                     System.exit(0);
+            }
+        }
     }
 
-    public static void test3() {
+    public static void test3(Scanner scanner) {
         Session session = Hibernate.getSession();
 
         session.beginTransaction();
-        user user = new user();
-
-        user.setDate(new java.sql.Date(System.currentTimeMillis()));
-        user.setUsername("hibernate");
-
-        session.save(user);
-        session.getTransaction().commit();
+        Hbm j = new Hbm();
+        boolean flag = true;
+        do {
+            System.out.println("1：增加数据");
+            System.out.println("2：删除数据");
+            System.out.println("3：修改数据");
+            System.out.println("4：查询数据");
+            System.out.println("0：退出程序");
+            int i = scanner.nextInt();
+            switch (i) {
+                case 1:
+                    j.add(scanner, session);
+                    break;
+                case 2:
+                    j.delete(scanner, session);
+                    break;
+                case 3:
+                    j.modify(scanner, session);
+                    break;
+                case 4:
+                    j.search(scanner, session);
+                    break;
+                default:
+                    Hibernate.closeSession();
+                    flag = !flag;
+                    break;
+            }
+        } while(flag);
     }
 
-    public void test2() {
+    public static void test2(Scanner scanner) {
         Statement pStemt = null;
         ResultSet rs = null;
         jdbc j = new jdbc();
@@ -39,13 +77,12 @@ public class Main {
         try {
             rs = pStemt.executeQuery(sql);
             while(rs.next()) {
-                System.out.println(rs.getString("username") + " " + rs.getString("pic")
-                        + " " + rs.getDate("date"));
+                System.out.println(rs.getString("username"));
             }
         } catch (SQLException e) {
             e.getLocalizedMessage();
         }
-        Scanner scanner = new Scanner(System.in);
+        boolean flag = true;
         do {
             System.out.println("1：增加数据");
             System.out.println("2：删除数据");
@@ -67,14 +104,15 @@ public class Main {
                     j.search(scanner);
                     break;
                 default:
-                    System.exit(0);
                     try {
                         connection.close();
                     } catch (SQLException e) {
-                        e.printStackTrace();
+                        e.getLocalizedMessage();
                     }
+                    flag = !flag;
+                    break;
             }
-        } while(true);
+        } while(flag);
     }
 
     public void test1() {

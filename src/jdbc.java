@@ -24,7 +24,9 @@ class jdbc {
     }
 
     public void add(Scanner scanner) {
-        System.out.print("输入");
+        System.out.print("请输入用户名：");
+        String username = scanner.next();
+
     }
 
     public void delete(Scanner scanner) {

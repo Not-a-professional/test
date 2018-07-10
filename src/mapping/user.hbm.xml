@@ -8,8 +8,9 @@
         <id name="username" type="java.lang.String">
             <column name="username"/>
         </id>
-        <property name="pic" type="java.sql.Blob" column="pic"/>
-        <property name="date" type="java.sql.Date" column="date"/>
-    </class>
+        <property name="pic" type="byte[]" column="pic"/>
+        <property name="date" type="timestamp" column="date"/>
+        <property name="age" type="int" column="age"/>
+     </class>
 
 </hibernate-mapping>
