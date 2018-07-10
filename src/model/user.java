@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.Getter;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @ToString
@@ -25,7 +26,7 @@ public class user implements Serializable {
 
     @Getter
     @Setter
-    private Timestamp date;
+    private Date date;
 
     @Getter
     @Setter

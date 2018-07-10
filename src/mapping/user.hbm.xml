@@ -9,7 +9,7 @@
             <column name="username"/>
         </id>
         <property name="pic" type="byte[]" column="pic"/>
-        <property name="date" type="timestamp" column="date"/>
+        <property name="date" type="date" column="date"/>
         <property name="age" type="int" column="age"/>
      </class>
 

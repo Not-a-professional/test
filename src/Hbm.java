@@ -2,6 +2,7 @@ import model.user;
 import org.hibernate.Session;
 
 import java.io.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,7 +16,7 @@ public class Hbm {
         System.out.print("请输入日期(格式yyyy-MM-dd)：");
         String date = scanner.next();
         try {
-            user.setDate(new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(date).getTime()));
+            user.setDate(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(date).getTime()));
         } catch (ParseException e) {
             System.out.println(e.getLocalizedMessage());
         }
@@ -92,9 +93,9 @@ public class Hbm {
                 System.out.print("输入新的日期(格式yyyy-MM-dd)：");
                 String newDate = scanner.next();
                 try {
-                    user.setDate(new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(newDate).getTime()));
+                    user.setDate(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(newDate).getTime()));
                 } catch (ParseException e) {
-                    System.out.println(e.getLocalizedMessage());;
+                    System.out.println(e.getLocalizedMessage());
                 }
             } else if (field.equals("年龄")) {
                 System.out.print("输入新的年龄：");
