@@ -19,7 +19,7 @@ public class Main {
                 case 2:
                     test3(scanner);
                     break;
-                 default:
+                 case 0:
                      System.exit(0);
             }
         }
@@ -51,7 +51,7 @@ public class Main {
                 case 4:
                     j.search(scanner, session);
                     break;
-                default:
+                case 0:
                     Hibernate.closeSession();
                     flag = !flag;
                     break;
@@ -92,7 +92,7 @@ public class Main {
                 case 4:
                     j.search(scanner, connection);
                     break;
-                default:
+                case 0:
                     try {
                         connection.close();
                     } catch (SQLException e) {
