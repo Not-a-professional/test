@@ -54,6 +54,10 @@ public class Hbm {
     }
 
     public void delete(Scanner scanner, Session session) {
+        if (isEmpty(session)) {
+            System.out.println("暂无数据可操作！");
+            return;
+        }
         System.out.print("请输入想要删除的用户的用户名：");
         String username = scanner.next();
         while(checkUsername(username, session) == 0) {
@@ -68,6 +72,10 @@ public class Hbm {
     }
 
     public void  modify(Scanner scanner, Session session) {
+        if (isEmpty(session)) {
+            System.out.println("暂无数据可操作！");
+            return;
+        }
         System.out.print("请输入需要修改的用户的用户名：");
         String username = scanner.next();
         while(checkUsername(username, session) == 0) {
@@ -131,6 +139,10 @@ public class Hbm {
     }
 
     public void search(Scanner scanner, Session session) {
+        if (isEmpty(session)) {
+            System.out.println("暂无数据可操作！");
+            return;
+        }
         System.out.print("请输入所要查找的用户名(支持模糊搜索)：");
         String username = scanner.next();
         List<user> users = (List<user>) session.createQuery("select u from user u where u.username like ?")
@@ -159,6 +171,15 @@ public class Hbm {
             return -1;
         } else {
             return 0;
+        }
+    }
+
+    public boolean isEmpty(Session session) {
+        List<user> users = (List<user>) session.createQuery("select u from user u").list();
+        if (users.isEmpty()) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

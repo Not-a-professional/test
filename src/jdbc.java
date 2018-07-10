@@ -76,6 +76,10 @@ class jdbc {
     }
 
     public void delete(Scanner scanner, Connection connection) {
+        if (isEmpty(connection)) {
+            System.out.println("暂无数据可操作！");
+            return;
+        }
         System.out.print("请输入需要删除的用户的用户名：");
         String username = scanner.next();
         while (checkUsername(username, connection) == 0) {
@@ -98,6 +102,10 @@ class jdbc {
     }
 
     public void modify(Scanner scanner, Connection connection) {
+        if (isEmpty(connection)) {
+            System.out.println("暂无数据可操作！");
+            return;
+        }
         System.out.print("请输入需要修改的用户的用户名：");
         String username = scanner.next();
         while(checkUsername(username, connection) == 0) {
@@ -187,6 +195,10 @@ class jdbc {
     }
 
     public void search(Scanner scanner, Connection connection) {
+        if (isEmpty(connection)) {
+            System.out.println("暂无数据可操作！");
+            return;
+        }
         System.out.print("请输入所要查找的用户名(支持模糊搜索)：");
         String username = scanner.next();
         String sql = "select * from user where username like ?";
@@ -236,5 +248,24 @@ class jdbc {
             System.out.println(e.getLocalizedMessage());
         }
         return 0;
+    }
+
+    public boolean isEmpty(Connection connection) {
+        String sql = "select u.* from user u";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet rs;
+            rs = preparedStatement.executeQuery();
+            if (!rs.next()) {
+                preparedStatement.close();
+                return true;
+            } else {
+                preparedStatement.close();
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+        return true;
     }
 }
