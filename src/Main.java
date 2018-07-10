@@ -1,10 +1,6 @@
-import model.user;
 import org.hibernate.Session;
 
-import java.io.*;
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -64,24 +60,17 @@ public class Main {
     }
 
     public static void test2(Scanner scanner) {
-        Statement pStemt = null;
-        ResultSet rs = null;
         jdbc j = new jdbc();
         Connection connection = j.getConnection();
-        try {
-            pStemt = (Statement) connection.createStatement();
-        } catch (SQLException e) {
-            e.getLocalizedMessage();
-        }
-        String sql = "select * from user";
-        try {
-            rs = pStemt.executeQuery(sql);
-            while(rs.next()) {
-                System.out.println(rs.getString("username"));
-            }
-        } catch (SQLException e) {
-            e.getLocalizedMessage();
-        }
+//        String sql = "select * from user";
+//        try {
+//            rs = pStemt.executeQuery(sql);
+//            while(rs.next()) {
+//                System.out.println(rs.getString("username"));
+//            }
+//        } catch (SQLException e) {
+//            e.getLocalizedMessage();
+//        }
         boolean flag = true;
         do {
             System.out.println("1：增加数据");
@@ -92,16 +81,16 @@ public class Main {
             int i = scanner.nextInt();
             switch (i) {
                 case 1:
-                    j.add(scanner);
+                    j.add(scanner, connection);
                     break;
                 case 2:
-                    j.delete(scanner);
+                    j.delete(scanner, connection);
                     break;
                 case 3:
-                    j.modify(scanner);
+                    j.modify(scanner, connection);
                     break;
                 case 4:
-                    j.search(scanner);
+                    j.search(scanner, connection);
                     break;
                 default:
                     try {

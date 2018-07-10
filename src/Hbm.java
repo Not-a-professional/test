@@ -17,7 +17,7 @@ public class Hbm {
         try {
             user.setDate(new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(date).getTime()));
         } catch (ParseException e) {
-            e.getLocalizedMessage();
+            System.out.println(e.getLocalizedMessage());
         }
         InputStream in = null;
         System.out.print("请输入图片路径：");
@@ -25,15 +25,17 @@ public class Hbm {
         try {
             in = new FileInputStream(address);
         } catch (FileNotFoundException e) {
-            e.getLocalizedMessage();
+            System.out.println(e.getLocalizedMessage());
         }
         byte[] buffer = null;
         try {
-            buffer = new byte[in.available()];
-            in.read(buffer);
-            in.close();
+            if (in != null) {
+                buffer = new byte[in.available()];
+                in.read(buffer);
+                in.close();
+            }
         } catch (IOException e) {
-            e.getLocalizedMessage();
+            System.out.println(e.getLocalizedMessage());
         }
         user.setPic(buffer);
         System.out.print("请输入用户名：");
@@ -80,7 +82,7 @@ public class Hbm {
         try {
             os.write(user.getPic());
         } catch (IOException e) {
-            e.getLocalizedMessage();
+            System.out.println(e.getLocalizedMessage());
         }
 
         System.out.print("请输入需要修改的字段名(输入保存后即可修改)：");
@@ -92,7 +94,7 @@ public class Hbm {
                 try {
                     user.setDate(new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(newDate).getTime()));
                 } catch (ParseException e) {
-                    e.getLocalizedMessage();
+                    System.out.println(e.getLocalizedMessage());;
                 }
             } else if (field.equals("年龄")) {
                 System.out.print("输入新的年龄：");
@@ -105,15 +107,17 @@ public class Hbm {
                 try {
                     in = new FileInputStream(newAddress);
                 } catch (FileNotFoundException e) {
-                    e.getLocalizedMessage();
+                    System.out.println(e.getLocalizedMessage());;
                 }
                 byte[] buffer = null;
                 try {
-                    buffer = new byte[in.available()];
-                    in.read(buffer);
-                    in.close();
+                    if (in != null) {
+                        buffer = new byte[in.available()];
+                        in.read(buffer);
+                        in.close();
+                    }
                 } catch (IOException e) {
-                    e.getLocalizedMessage();
+                    System.out.println(e.getLocalizedMessage());
                 }
                 user.setPic(buffer);
             }
@@ -143,7 +147,7 @@ public class Hbm {
                 try {
                     os.write(users.get(i).getPic());
                 } catch (IOException e) {
-                    e.getLocalizedMessage();
+                    System.out.println(e.getLocalizedMessage());
                 }
             }
         }
