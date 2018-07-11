@@ -1,4 +1,3 @@
-import jdk.nashorn.internal.scripts.JD;
 import service.JDBCService;
 
 import java.io.*;

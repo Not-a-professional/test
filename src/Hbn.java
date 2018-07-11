@@ -4,9 +4,6 @@ import service.HibernateService;
 import service.JDBCService;
 
 import java.io.*;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Hbn {

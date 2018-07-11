@@ -55,7 +55,7 @@ public class Main {
                 case 0:
                     Hibernate.closeSession();
                     Hibernate.shutdown();
-                    flag = !flag;
+                    flag = false;
                     break;
             }
         } while(flag);
@@ -91,7 +91,7 @@ public class Main {
                     } catch (SQLException e) {
                         e.getLocalizedMessage();
                     }
-                    flag = !flag;
+                    flag = false;
                     break;
             }
         } while(flag);
