@@ -3,7 +3,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class Hibernate extends Object{
+public class Hibernate {
     private static SessionFactory sessionFactory;
     static
     {
@@ -20,7 +20,7 @@ public class Hibernate extends Object{
     }
     public static Session getSession() throws HibernateException
     {
-        Session session = (Session) threadLocal.get();
+        Session session = threadLocal.get();
         if (session == null){
             session = sessionFactory.openSession();
             threadLocal.set(session);
@@ -28,7 +28,7 @@ public class Hibernate extends Object{
         return session;
     }
     public static void closeSession() throws HibernateException {
-        Session session = (Session) threadLocal.get();
+        Session session = threadLocal.get();
         if (session != null)
             session.close();
         threadLocal.set(null);

@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        scanner.useDelimiter("\n");
         while(true) {
             System.out.println("1：JDBC");
             System.out.println("2：Hibernate");
@@ -29,7 +30,7 @@ public class Main {
         Session session = Hibernate.getSession();
 
         session.beginTransaction();
-        Hbm j = new Hbm();
+        Hbn j = new Hbn();
         boolean flag = true;
         do {
             System.out.println("1：增加数据");
@@ -53,6 +54,7 @@ public class Main {
                     break;
                 case 0:
                     Hibernate.closeSession();
+                    Hibernate.shutdown();
                     flag = !flag;
                     break;
             }
@@ -62,15 +64,6 @@ public class Main {
     public static void test2(Scanner scanner) {
         jdbc j = new jdbc();
         Connection connection = j.getConnection();
-//        String sql = "select * from user";
-//        try {
-//            rs = pStemt.executeQuery(sql);
-//            while(rs.next()) {
-//                System.out.println(rs.getString("username"));
-//            }
-//        } catch (SQLException e) {
-//            e.getLocalizedMessage();
-//        }
         boolean flag = true;
         do {
             System.out.println("1：增加数据");
