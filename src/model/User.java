@@ -12,7 +12,7 @@ import java.sql.Date;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class user implements Serializable {
+public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Getter

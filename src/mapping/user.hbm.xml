@@ -4,7 +4,7 @@
 
 <hibernate-mapping>
 
-    <class name="model.user" table="user">
+    <class name="model.User" table="user">
         <id name="username" type="java.lang.String">
             <column name="username"/>
         </id>

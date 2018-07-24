@@ -1,6 +1,6 @@
 package service;
 
-import model.user;
+import model.User;
 import org.hibernate.Session;
 
 import java.io.ByteArrayOutputStream;
@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class HibernateService {
     public static int checkUsername(String username, Session session) {
-        user user = (user) session.createQuery("select u from user u where u.username = ?").setParameter(0, username).uniqueResult();
+        User user = (User) session.createQuery("select u from User u where u.username = ?").setParameter(0, username).uniqueResult();
         if (user != null) {
             return -1;
         } else {
@@ -23,12 +23,12 @@ public class HibernateService {
     }
 
     public static boolean isEmpty(Session session) {
-        List<user> users = (List<user>) session.createQuery("select u from user u").list();
+        List<User> users = (List<User>) session.createQuery("select u from User u").list();
         return users.isEmpty();
     }
 
     public static void searchByUsername(String username, Session session) {
-        List<user> users = (List<user>) session.createQuery("select u from user u where u.username like ?")
+        List<User> users = (List<User>) session.createQuery("select u from User u where u.username like ?")
                 .setParameter(0, "%" + username + "%").list();
         if (users.isEmpty()) {
             System.out.println("查无此人！");
@@ -48,7 +48,7 @@ public class HibernateService {
         }
     }
 
-    public static void checkDate(String date, Scanner scanner, user user) {
+    public static void checkDate(String date, Scanner scanner, User user) {
         boolean flag = false;
         while (!flag) {
             try {

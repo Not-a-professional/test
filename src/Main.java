@@ -62,7 +62,7 @@ public class Main {
     }
 
     public static void test2(Scanner scanner) {
-        jdbc j = new jdbc();
+        Jdbc j = new Jdbc();
         Connection connection = j.getConnection();
         boolean flag = true;
         do {

@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 
-class jdbc {
+class Jdbc {
     public Connection getConnection() {
         String url="jdbc:mysql://localhost:3306/user?useSSL=false&characterEncoding=UTF-8";
         String username="root";

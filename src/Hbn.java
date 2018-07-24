@@ -1,4 +1,4 @@
-import model.user;
+import model.User;
 import org.hibernate.Session;
 import service.HibernateService;
 import service.JDBCService;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Hbn {
     public void add(Scanner scanner, Session session) {
-        user user = new user();
+        User user = new User();
 
         System.out.print("请输入日期(格式yyyy-MM-dd)：");
         String date = scanner.next();
@@ -49,7 +49,7 @@ public class Hbn {
             username = scanner.next();
         }
 
-        user user = (model.user) session.get(model.user.class, username);
+        User user = (model.User) session.get(model.User.class, username);
         session.delete(user);
         session.getTransaction().commit();
         System.out.println("删除成功！");
@@ -67,7 +67,7 @@ public class Hbn {
             username = scanner.next();
         }
 
-        user user = (model.user) session.get(model.user.class, username);
+        User user = (model.User) session.get(model.User.class, username);
 
         System.out.println("日期：" + user.getDate() + " " + "年龄：" + user.getAge() + " " + "图片：");
         OutputStream os = new ByteArrayOutputStream();
