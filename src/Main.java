@@ -1,11 +1,16 @@
 import org.hibernate.Session;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        dataBaseMain();
+    }
+
+    public static void dataBaseMain() {
         Scanner scanner = new Scanner(System.in);
         scanner.useDelimiter("\n");
         while(true) {
@@ -20,8 +25,8 @@ public class Main {
                 case 2:
                     test3(scanner);
                     break;
-                 case 0:
-                     System.exit(0);
+                case 0:
+                    System.exit(0);
             }
         }
     }
